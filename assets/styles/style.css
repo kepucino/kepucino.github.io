@@ -1,0 +1,75 @@
+body {
+    background-image: url("/assets/images/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 80vw;
+    margin: auto;
+    margin-top: 5vw;
+}
+
+.col, .col-8 {
+    padding: 0;
+    margin: 0;
+}
+
+.main-slider {
+    width: auto;
+    height: auto;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: gray;
+    border: 1px solid gray;
+    border-radius: 8px;
+}
+
+.carousel-item {
+    height: 50vh;
+}
+
+.carousel-item a {
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-item img {
+    height: 50vh;
+    width: 50vw;
+    border-radius: 16px;
+}
+
+/* .carousel-item img{
+    height: 30vh;
+    width: 100%
+    border: solid whitesmoke 3px;
+    border-radius: 16px;
+    border: solid 1px black;
+} */
+
+.menu {
+    border: solid black 1px;
+    background-color: whitesmoke;
+    border-radius: 16px;
+    padding-top: 10px;
+}
+
+.menu nav {
+    background-color: whitesmoke;
+}
+
+.menu a {
+    margin-bottom: 8px;
+    color: gray;
+}
+
+.o-mnie {
+    border: solid black 1px;
+    background-color: whitesmoke;
+    border-radius: 16px;
+    padding: 10px 30px;
+}
+
+.navbar-collapse {
+    display: flex;
+    justify-content: space-around;
+}
