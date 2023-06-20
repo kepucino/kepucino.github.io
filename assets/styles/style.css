@@ -4,23 +4,15 @@ body {
     background-size: cover;
     width: 80vw;
     margin: auto;
-    margin-top: 5vw;
-}
-
-.col, .col-8 {
-    padding: 0;
-    margin: 0;
-}
-
-.main-slider {
-    width: auto;
-    height: auto;
+    margin-top: 10vh;
 }
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
-    background-color: gray;
+    background-color: rgba(50, 100, 250);
     border: 1px solid gray;
-    border-radius: 8px;
+    border-radius: 5vh;
+    width: 1.2em;
+    height: 2.4em;
 }
 
 .carousel-item {
@@ -34,37 +26,23 @@ body {
 
 .carousel-item img {
     height: 50vh;
-    width: 50vw;
-    border-radius: 16px;
-}
-
-/* .carousel-item img{
-    height: 30vh;
-    width: 100%
-    border: solid whitesmoke 3px;
-    border-radius: 16px;
-    border: solid 1px black;
-} */
-
-.menu {
-    border: solid black 1px;
-    background-color: whitesmoke;
-    border-radius: 16px;
-    padding-top: 10px;
+    width: 75%;
+    border-radius: 4vh;
 }
 
 .menu nav {
-    background-color: whitesmoke;
+    flex-direction: column;
 }
 
 .menu a {
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     color: gray;
+    margin-right: auto;
 }
 
-.o-mnie {
+.box {
     border: solid black 1px;
-    background-color: whitesmoke;
+    background-color: rgba(50, 100, 250, 0.5);
     border-radius: 16px;
     padding: 10px 30px;
 }
