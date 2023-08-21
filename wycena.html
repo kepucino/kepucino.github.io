@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <title>Envolve</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/assets/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  </head>
+  
+  <body>
+    <!-- pasek gorny -->
+    <nav class="navbar fixed-top navbar-expand-lg">
+      <a class="navbar-brand" href="index.html"><img src="/assets/images/logo.png" width="250em"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <i class="fa-solid fa-bars fa-3x"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Wycena</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#skok-oferta">Oferta</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="informacje.html">Informacje</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skok-o-nas">O nas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skok-stopka">Kontakt</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+    <div class="container">
+      <!-- wycena -->
+      <div class="row wycena">
+          <div class="row">
+              <h1>Wypełnij formularz</h1>
+          </div>
+
+          <div class="row">
+              <p>Napisz do nas, nasz ekspert skontaktuje się z Tobą, aby przygotować indywidualną ofertę.</p>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <form>
+                <input class="wycena-name" type="text" name="name" placeholder="Imię i nazwisko">
+              </form>
+            </div>
+
+            <div class="col-6">
+              <form>
+                <input class="wycena-phone" type="tel" name="phone-num" placeholder="Numer telefonu">
+              </form>
+            </div>
+
+            <div class="col-12">
+              <form>
+                <input class="wycena-email" type="email" name="e-mail" placeholder="Adres E-mail">
+              </form>
+            </div>
+          </div>
+
+          <div class="row zapisz">
+            <div class="col-auto">
+              <input type="checkbox" id="newsletter-regulamin" value="akceptuje">
+              <label for="newsletter-regulamin">Zapoznałem się z warunkami regulaminu.</label>
+            </div>
+
+            <div class="col-auto">
+              <button>Wyślij</button>
+            </div>
+          </div>
+      </div>
+
+      <!-- o firmie -->
+      <div class="row" id="skok-o-nas"></div>
+
+      <div class="row o-nas">
+          <div class="col-xs-5 col-6" style="display: flex; flex-direction: column; justify-content: center;">
+          <img src="/assets/images/dom6.jpg">
+          </div>
+
+          <div class="col-xs-7 col-6" style="display: flex; flex-direction: column; justify-content: center;">
+            <h2>O nas</h2>
+            <p>Envolve działa z prawdziwą pasją i nieustannie dąży do doskonałości. Pozostajemy na czele szybko rozwijającej się branży upewniając się, że nasze produkty są najlepsze na rynku, a umiejętności stale ulepszane. Wierzymy, że pasja i zaangażowanie całego zespołu przekłada się na dobrze wykonywaną pracę.</p>
+          </div>
+      </div>
+
+      <!-- newsletter -->
+      <div class="row" id="skok-stopka"></div>
+
+      <div class="row newsletter">
+          <div class="col-6 newsletter-formularz">
+            <div class="row-4">
+                <form>
+                <input class="newsletter-email" type="email" name="e-mail" placeholder="E-mail">
+                </form>
+            </div>
+            <div class="row-4">
+                <input type="checkbox" id="newsletter-regulamin" value="akceptuje">
+                <label for="newsletter-regulamin">Akceptuję regulamin.</label>
+            </div>
+            <div class="row-4">
+                <button>Zapisz</button>
+            </div>
+            </div>
+
+            <div class="col-6 newsletter-tekst">
+              <h2><b>Zapisz się do newslettera!</b></h2>
+              <p>Zapisz się do newslettera, aby otrzymywać informację o ofertach naszej firmy oraz na temat nowych technologii wchodzących na rynek OZE.</p>
+            </div>
+        </div>
+      </div>
+
+      <!-- stopka -->
+
+      <div class="tlo-stopki" style="margin-top: 100px;">
+      <footer class="container stopka">
+        <div class="row" style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
+          <a href="https://twitter.com"><img src="/assets/images/twitter.svg" style="width: 62px; margin-right: 10px"></a>
+          <a href="https://instagram.com"><img src="/assets/images/instagram.png" style="width: 56px; margin-top: 0px;"></a>
+          <a href="https://facebook.com"><img src="/assets/images/facebook.png" style="width: 64px; margin-left: 10px;"></a>
+        </div>
+
+        <div class="row-auto" style="display: flex; justify-content: space-between;">
+          <div class="col-4" style="display: flex; justify-content: flex-start; flex-direction: column; margin-top: -0.2em;">
+            <div class="row stopka-tekst">
+              <h3>Telefon</h3>
+              <p>Marek: 583 224 960</p>
+              <p>Dawid: 246 907 483</p>
+            </div>
+
+            <div class="row stopka-tekst">
+              <h3>E-mail</h3>
+              <p>biznes@envolve.pl</p>
+              <p>prezes@envolve.pl</p>
+            </div>
+
+            <div class="row stopka-tekst">
+              <h3>Adres firmy</h3>
+              <p>ul. Szkolna 17 Białystok</p>
+            </div>
+          </div>
+
+          <div class="col-8" style="margin-right: -0.6em;"> 
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2394.2634730071723!2d23.08427481604984!3d53.12341579908665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ffb2090e987a5%3A0xdc9d3588cb47d85d!2sSzkolna%2017%2C%2015-640%20Bia%C5%82ystok!5e0!3m2!1spl!2spl!4v1670178625223!5m2!1spl!2spl" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="/assets/scripts/script.js"></script>
+    <script src="/assets/jqueary/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="/assets/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

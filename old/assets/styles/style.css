@@ -1,0 +1,53 @@
+body {
+    background-image: url("/assets/images/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 80vw;
+    margin: auto;
+    margin-top: 10vh;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: rgba(50, 100, 250);
+    border: 1px solid gray;
+    border-radius: 5vh;
+    width: 1.2em;
+    height: 2.4em;
+}
+
+.carousel-item {
+    height: 50vh;
+}
+
+.carousel-item a {
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-item img {
+    height: 50vh;
+    width: 75%;
+    border-radius: 4vh;
+}
+
+.menu nav {
+    flex-direction: column;
+}
+
+.menu a {
+    margin-bottom: 12px;
+    color: gray;
+    margin-right: auto;
+}
+
+.box {
+    border: solid black 1px;
+    background-color: rgba(50, 100, 250, 0.5);
+    border-radius: 16px;
+    padding: 10px 30px;
+}
+
+.navbar-collapse {
+    display: flex;
+    justify-content: space-around;
+}
