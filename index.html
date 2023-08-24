@@ -2,94 +2,226 @@
 <html lang="pl">
   <head>
     <title>PV Kalkulator</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.png">
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="Karol Okninski">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/styles/style.css">
-  </head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/styles/style.css">
+</head>
   
-  <body>
-    <div class="container">
+<body>
+  <!-- <nav class="navbar fixed-top"> -->
+    <!-- <nav class="navbar">
+      <h4 class="navbar-text">Kalkulator zysków z fotowoltaiki</h4>
+  </nav> -->
+
+  <div class="container">
+    <div class="col">
+      <section class="main-text">
+          <h1>Kalkulator szacunkowej produkcji energii z fotowoltaiki</h1>
+          <p>Wprowadź informację na temat instalacji i sprawdź estymowaną historyczną produkcję energii na podstawie danych historycznych</p>
+      </section>
+
+      <section class="card">
         <div class="col">
-            <nav class="navbar fixed-top">
-                <h3 class="navbar-text">Kalkulator zysków z fotowoltaiki</h3>
-            </nav>
+          <h2>1. Podaj parametry instalacji</h2>
 
-            <section>
-                <h2>Szacunkowa produkcja energii z fotowoltaiki</h2>
-                <p>Wprowadź informację na temat instalacji i sprawdź estymowaną historyczną produkcję energii na podstawie danych historycznych</p>
-            </section>
+          <div class="row parameters-form">
+              <div class="col-12 col-lg-5" style="margin: auto;">
+                  <div class="form-floating">
+                    <input class="form-control" type="number" step="0.01" id="input-power" placeholder="Zainstalowana moc" />
+                    <label for="floatingInput">Zainstalowana moc (kWh)</label>
+                  </div>
 
-            <section>
-                <div class="row parameters-form">
-                    <div class="col-4">
-                        <div class="form-outline">
-                            <input class="form-control" type="number" id="typeNumber" placeholder="Zainstalowana moc" />
-                        </div>
+                  <label id="label-angle" class="form-label">Kąt nachylenia: 30°</label>
+                  <input id="input-angle" type="range" class="form-range" min="0" max="90" step="10" value="30">
+                  
+                  <label id="label-azimuth" class="form-label">Azymut: 0°</label>
+                  <input id="input-azimuth" type="range" class="form-range" min="-90" max="90" step="30" value="0">
+              </div>
 
-                        <div class="form-outline">
-                            <input class="form-control" type="number" id="typeNumber" placeholder="Kąt nachylenia" />
-                        </div>
+              <div class="col-12 col-lg-7" style="margin: auto;">
+                  <h3>Wyjaśnienie parametrów</h3>
+                  <p>Lorem ipsum dolor sit amet consectetur adipiscing elit magna, ullamcorper sem feugiat nisl est gravida tortor, erat commodo cursus ut dictum nascetur id. Consequat egestas massa phasellus luctus et montes aenean rutrum, lobortis elementum fermentum mattis ridiculus justo varius porta venenatis, interdum pharetra velit blandit augue litora taciti.</p>
+              </div>
+          </div>
 
-                        <div class="form-outline">
-                            <input class="form-control" type="number" id="typeNumber" placeholder="Azymut" />
-                        </div>
-                    </div>
+          <h2>2. Wprowadź lokalizację</h2>
+          
+          <div style="width: 90%; margin: auto;">
+            <div id="map" class="map-container"></div>
+            <p id="map-lat" style="margin-bottom: 0;"></p>
+            <p id="map-lng" style="margin-top: 0;"></p>
+            
+            <!-- <div class="input-group mb-3">
+              <input class="form-control" type="search" id="input-search-location" placeholder="Wyszukaj lokalizację" aria-describedby="button-location">
+            
+              <button class="btn btn-outline-secondary" type="button" id="button-location"><i class="bi bi-search"></i></button>
+            </div> -->
+          </div>
 
-                    <div class="col-7">
-                        <h3>Wyjaśnienie parametrów</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit magna, ullamcorper sem feugiat nisl est gravida tortor, erat commodo cursus ut dictum nascetur id. Consequat egestas massa phasellus luctus et montes aenean rutrum, lobortis elementum fermentum mattis ridiculus justo varius porta venenatis, interdum pharetra velit blandit augue litora taciti.</p>
-                    </div>
-                </div>
-            </section>
+          <!-- <h2>3. Zużycie energii</h2>
 
-            <section>
-                <p>mapa z lokalizacja</p>
-                <div class="col">
-                    <div style="width: 80%; height: 24em; margin: 2em auto;">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.635599112899!2d21.00342007649947!3d52.23183797198705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc8c92692e49%3A0xc2e97ae5311f2dc2!2sPa%C5%82ac%20Kultury%20i%20Nauki!5e0!3m2!1spl!2spl!4v1692695374196!5m2!1spl!2spl" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                    
-                    <form class="form-inline d-flex justify-content-center md-form form-sm mt-0">
-                        <i class="fas fa-search" aria-hidden="true"></i>
-                        <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
-                          aria-label="Search">
-                    </form>
-                </div>
-            </section>
+          <div class="row consumption">
+            <input type="range" class="form-range" id="customRange1">
+            <input type="range" class="form-range" id="customRange1">
+            <input type="range" class="form-range" id="customRange1">
+            <input type="range" class="form-range" id="customRange1">
+            <input type="range" class="form-range" id="customRange1">
+            <input type="range" class="form-range" id="customRange1">
+            <input type="range" class="form-range" id="customRange1">
+            <input type="range" class="form-range" id="customRange1">
+            <input type="range" class="form-range" id="customRange1">
+            <input type="range" class="form-range" id="customRange1">
+            <input type="range" class="form-range" id="customRange1">
+            <input type="range" class="form-range" id="customRange1">
+          </div> -->
 
-            <section>
-                <p>Wykres liniowy</p>
-                <div id="myPlot" style="width: 100%; max-width: 700px; margin: auto;"></div>
-            </section>
-
-            <section>
-                <p>Tabelka z podsumowaniem po miesiacu</p>
-            </section>
-
-            <section>
-                <p>Kontakt do instalatora</p>
-
-                <div class="row">
-                    <div class="col">
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, integer accumsan nibh nascetur risus bibendum, a vulputate dui erat feugiat phasellus.</p>
-                    </div>
-                    <div class="col">
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, integer accumsan nibh nascetur risus bibendum, a vulputate dui erat feugiat phasellus.</p>
-                    </div>
-                    <div class="col">
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, integer accumsan nibh nascetur risus bibendum, a vulputate dui erat feugiat phasellus.</p>
-                    </div>
-                </div>
-            </section>
+          <a href="#prediction-card">
+            <button class="btn btn-outline-primary" type="button" id="button-calculate">Oblicz szacowaną produkcję</button>
+          </a>
+          <span id="span-wrong-input" style="color: red; font-size: large; display: none;">Wprowadź prawidłowe dane</span>
         </div>
-    </div>
-  </body>
+      </section>
 
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="assets/scripts/script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script> 
+      <section class="card" id="prediction-card">
+        <h2>Prognoza produkcji</h2>
+
+        <div id="plot"></div>
+
+        <div id="carouselExampleCaptions" class="carousel slide carousel-dark">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div style="width: 100%;">
+                <div id="table-2023" class="col my-5 mx-auto w-75"></div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div style="width: 100%;">
+                <div id="table-2022" class="col my-5 mx-auto w-75"></div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div style="width: 100%;">
+                <div id="table-2021" class="col my-5 mx-auto w-75"></div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div style="width: 100%;">
+                <div id="table-2020" class="col my-5 mx-auto w-75"></div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div style="width: 100%;">
+                <div id="table-2019" class="col my-5 mx-auto w-75"></div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div style="width: 100%;">
+                <div id="table-2018" class="col my-5 mx-auto w-75"></div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <!-- <table id="prediction-table" class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Produkcja (kWh)</th>
+              <th scope="col">Zysk (PLN)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Styczeń</th>
+              <td>520</td>
+              <td>30.21</td>
+            </tr>
+          </tbody>
+        </table> -->
+      </section>
+
+      <section class="contact">
+        <h3 style="text-align: center;">Wprowadź adres e-mail, a skontaktujemy się z Tobą.</h3>
+
+        <div class="my-5 mx-auto col-12 col-md-9 col-lg-6">
+          <div class="row">
+            <input type="email" class="form-control" id="input-email" placeholder="E-mail" aria-describedby="emailHelp">
+            <div id="email-help" class="form-text" style="display: block;">We'll never share your email with anyone else.</div>
+            <div id="email-error" class="form-text" style="color: red; display: none;">Wprowadź prawidłowy adres e-mail.</div>
+
+            <div class="mt-2 form-check">
+              <input type="checkbox" class="form-check-input" id="checkbox-email">
+              <label class="form-check-label" for="checkbox-email">Akceptuję <a href="regulamin.html">regulamin</a>.</label>
+            </div>
+            <span id="checkbox-error" class="form-text" style="color: red; display: none;">Zaakceptuj regulamin, aby kontynuować.</span>
+
+            <button class="my-4 btn btn-primary" type="submit" id="button-email">Zapisz</button>
+          </div>
+        </div>
+
+        <!-- Email popup -->
+        <div class="modal fade" id="email-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">E-mail został przesłany.</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Lorem ipsum dolor sit amet consectetur adipiscing elit, integer accumsan nibh nascetur risus bibendum, a vulputate dui erat feugiat phasellus.
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-5">
+          <h3>Kontakt do instalatora</h3>
+
+          <div class="row">
+              <div class="col">
+                  <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, integer accumsan nibh nascetur risus bibendum, a vulputate dui erat feugiat phasellus.</p>
+              </div>
+              <div class="col">
+                  <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, integer accumsan nibh nascetur risus bibendum, a vulputate dui erat feugiat phasellus.</p>
+              </div>
+              <div class="col">
+                  <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, integer accumsan nibh nascetur risus bibendum, a vulputate dui erat feugiat phasellus.</p>
+              </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+<script src="https://cdn.plot.ly/plotly-2.25.2.min.js" charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script> 
+<script src="/assets/scripts/script.js"></script>
 </html>
