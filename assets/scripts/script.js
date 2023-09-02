@@ -211,13 +211,13 @@ function displayPlot(plot_data, id, cumulative=0) {
 
 function displayPlotConsumption(plot_data, id, cumulative=0) {
   const cumulativeSumProduction = (sum => value => sum += value/1000)(0);
-  const cumulativeSumProfit = (sum => value => sum += value)(0);
+  const cumulativeSumConsumption = (sum => value => sum += value)(0);
 
-  for (let i=0; i < plot_data.production.length; i++) {
-    // plot_data.production[i] -= plot_data.consumption[i];
-    plot_data.profit[i] = plot_data.consumption[i];
-    // plot_data.profit[i] = 0;
-  }
+  // for (let i=0; i < plot_data.production.length; i++) {
+  //   // plot_data.production[i] -= plot_data.consumption[i];
+  //   plot_data.profit[i] = plot_data.consumption[i];
+  //   // plot_data.profit[i] = 0;
+  // }
 
   var production = {
     name: (cumulative) ? 'Skumulowana produkcja (MWh)' : 'Produkcja (kWh)',
@@ -229,10 +229,10 @@ function displayPlotConsumption(plot_data, id, cumulative=0) {
     hovertemplate: (cumulative) ? 'Data: %{x}<br>Skumulowana produkcja: %{y} MWh<extra></extra>' : 'Data: %{x}<br>Produkcja: %{y} kWh<extra></extra>',
   };
   
-  var profit = {
+  var consumption = {
     name: (cumulative) ? 'Skumulowane zużycie (MWh)' : 'Zużycie (kWh)',
     x: plot_data.time,
-    y: (cumulative) ? plot_data.profit.map(cumulativeSumProfit) : plot_data.profit,
+    y: (cumulative) ? plot_data.consumption.map(cumulativeSumConsumption) : plot_data.consumption,
     type: 'scattergl',
     fill: (cumulative) ? 'tozeroy' : 'tozeroy',
     stackgroup: 'one',
@@ -240,7 +240,7 @@ function displayPlotConsumption(plot_data, id, cumulative=0) {
     yaxis: 'y2',
   };
   
-  var data = [production, profit];
+  var data = [production, consumption];
 
   var layout = {
     // title: {
